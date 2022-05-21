@@ -1,4 +1,4 @@
-import 'package:album/ui/navigation.dart';
+import 'package:album/view/navigation.dart';
 import 'package:flutter/material.dart';
 
 void main() {
