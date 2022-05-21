@@ -1,7 +1,11 @@
 import 'package:album/view/navigation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import 'controllers/controllers.dart';
 
 void main() {
+  Get.put(AlbumController());
   runApp(MyApp());
 }
 
