@@ -29,10 +29,31 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    List<Album> albums = _albumViewModel.getAlbums();
     return Scaffold(
       body: Center(
-        child: Text('Home Page'),
-      ),
+          child: ListView.builder(
+        itemCount: albums.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            leading: Image.network(
+              albums[index].artworkUrl60,
+              width: 60,
+            ),
+            title: Text(
+              albums[index].collectionName,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+            ),
+            subtitle: Text(albums[index].artistName),
+            trailing: IconButton(
+              splashRadius: 24,
+              icon: Icon(Icons.bookmark),
+              onPressed: () {},
+            ),
+          );
+        },
+      )),
     );
   }
 }

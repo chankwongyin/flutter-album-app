@@ -32,8 +32,8 @@ class _NavigationPageState extends State<NavigationPage> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
+            icon: Icon(Icons.my_library_music),
+            label: 'Album',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.bookmark),
