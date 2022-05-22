@@ -4,6 +4,8 @@ import 'package:album/viewModels/album/albumViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'bookmarkBtn.dart';
+
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -32,28 +34,25 @@ class _HomePageState extends State<HomePage> {
     List<Album> albums = _albumViewModel.getAlbums();
     return Scaffold(
       body: Center(
-          child: ListView.builder(
-        itemCount: albums.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            leading: Image.network(
-              albums[index].artworkUrl60,
-              width: 60,
-            ),
-            title: Text(
-              albums[index].collectionName,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-            ),
-            subtitle: Text(albums[index].artistName),
-            trailing: IconButton(
-              splashRadius: 24,
-              icon: Icon(Icons.bookmark),
-              onPressed: () {},
-            ),
-          );
-        },
-      )),
+        child: ListView.builder(
+          itemCount: albums.length,
+          itemBuilder: (context, index) {
+            return ListTile(
+              leading: Image.network(
+                albums[index].artworkUrl60,
+                width: 60,
+              ),
+              title: Text(
+                albums[index].collectionName,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
+              subtitle: Text(albums[index].artistName),
+              trailing: BookmarkBtn(album: albums[index]),
+            );
+          },
+        ),
+      ),
     );
   }
 }
