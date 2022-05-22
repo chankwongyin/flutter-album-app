@@ -1,11 +1,16 @@
 import 'package:album/view/navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 import 'controllers/controllers.dart';
 
-void main() {
+Future<void> main() async {
+  await Hive.initFlutter();
+  await Hive.openBox('albums');
+
   Get.put(AlbumController());
+  Get.put(HiveAlbumController());
   runApp(MyApp());
 }
 
