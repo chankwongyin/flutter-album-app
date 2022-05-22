@@ -1,1 +1,1 @@
-export './album.dart';
+export 'album/album.dart';

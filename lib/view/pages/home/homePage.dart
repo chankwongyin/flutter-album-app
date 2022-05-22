@@ -1,6 +1,6 @@
 import 'package:album/controllers/controllers.dart';
 import 'package:album/models/models.dart';
-import 'package:album/viewModels/albumViewModel.dart';
+import 'package:album/viewModels/album/albumViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
