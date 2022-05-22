@@ -4,6 +4,12 @@ A new Flutter project.
 
 ## Getting Started
 
+```
+flutter clean
+flutter pub get
+flutter run
+```
+
 TODO
 1. Show a list of albums fetched from
 https://itunes.apple.com/search?term=jack+johnson&entity=album
