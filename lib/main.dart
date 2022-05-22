@@ -1,3 +1,4 @@
+import 'package:album/models/models.dart';
 import 'package:album/view/navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -7,7 +8,8 @@ import 'controllers/controllers.dart';
 
 Future<void> main() async {
   await Hive.initFlutter();
-  await Hive.openBox('albums');
+  Hive.registerAdapter(AlbumAdapter());
+  await Hive.openBox<Album>('albums');
 
   Get.put(AlbumController());
   Get.put(HiveAlbumController());

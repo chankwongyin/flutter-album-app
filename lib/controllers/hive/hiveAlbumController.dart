@@ -2,18 +2,20 @@ import 'package:album/models/models.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 class HiveAlbumController {
-  static final box = Hive.box('albums');
+  static final box = Hive.box<Album>('albums');
   static const HIVE_ALBUM_KEY_BOOKMARK = 'bookmarks';
+
+  bool isBookmarked(Album album) {
+    Album? tmp = box.get(album.collectionId);
+    if (tmp == null)
+      return false;
+    else
+      return true;
+  }
 
   bool addBookmarkAlbum(Album album) {
     try {
-      List<Album> bookmarks =
-          box.get(HIVE_ALBUM_KEY_BOOKMARK, defaultValue: []);
-      for (var item in bookmarks) {
-        if (album.collectionId == item.collectionId) return true;
-      }
-      bookmarks.add(album);
-      box.put(HIVE_ALBUM_KEY_BOOKMARK, bookmarks);
+      box.put(album.collectionId, album);
       return true;
     } catch (e) {
       print(e);
@@ -23,17 +25,9 @@ class HiveAlbumController {
 
   bool removeBookmarkAlbum(Album album) {
     try {
-      List<Album> bookmarks =
-          box.get(HIVE_ALBUM_KEY_BOOKMARK, defaultValue: []);
-      for (var item in bookmarks) {
-        if (album.collectionId == item.collectionId) {
-          bookmarks.remove(item);
-          box.put(HIVE_ALBUM_KEY_BOOKMARK, bookmarks);
-          return true;
-        }
-      }
+      box.delete(album.collectionId);
 
-      return false;
+      return true;
     } catch (e) {
       print(e);
       return false;
@@ -41,6 +35,6 @@ class HiveAlbumController {
   }
 
   List<Album> getAllBookmarkAlbum() {
-    return box.get(HIVE_ALBUM_KEY_BOOKMARK, defaultValue: []);
+    return box.values.toList();
   }
 }

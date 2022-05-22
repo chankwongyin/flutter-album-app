@@ -1,23 +1,47 @@
+import 'package:hive/hive.dart';
+part 'album.g.dart';
+
+@HiveType(typeId: 1)
 class Album {
+  @HiveField(0)
   final String wrapperType;
+  @HiveField(1)
   final String collectionType;
+  @HiveField(2)
   final int artistId;
+  @HiveField(3)
   final int collectionId;
+  @HiveField(4)
   final int? amgArtistId;
+  @HiveField(5)
   final String artistName;
+  @HiveField(6)
   final String collectionName;
+  @HiveField(7)
   final String collectionCensoredName;
+  @HiveField(8)
   final String artistViewUrl;
+  @HiveField(9)
   final String collectionViewUrl;
+  @HiveField(10)
   final String artworkUrl60;
+  @HiveField(11)
   final String artworkUrl100;
+  @HiveField(12)
   final double? collectionPrice;
+  @HiveField(13)
   final String collectionExplicitness;
+  @HiveField(14)
   final int trackCount;
+  @HiveField(15)
   final String copyright;
+  @HiveField(16)
   final String country;
+  @HiveField(17)
   final String currency;
+  @HiveField(18)
   final String releaseDate;
+  @HiveField(19)
   final String primaryGenreName;
 
   Album(
