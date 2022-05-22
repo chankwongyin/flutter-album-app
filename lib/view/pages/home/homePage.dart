@@ -4,7 +4,7 @@ import 'package:album/viewModels/album/albumViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'bookmarkBtn.dart';
+import '../../components/bookmarkBtn.dart';
 
 class HomePage extends StatefulWidget {
   @override
